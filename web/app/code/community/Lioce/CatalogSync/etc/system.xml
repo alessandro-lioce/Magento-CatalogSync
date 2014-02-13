@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config>
+	<sections>
+		<catalog>
+			<groups>
+				<lioce_catalogsync translate="label">
+					<label>Catalog Sync</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>50</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<email_notification translate="label,comment">
+							<label>Notification email to</label>
+							<comment>recipient1@email.it, recipient2@email.it</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</email_notification>
+						<lock_cron translate="label,comment">
+							<label>Lock cron</label>
+							<comment>If Yes, you can execute sync only manually by calling the url</comment>
+							<frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</lock_cron>
+						<round_price_excess_fifty_cent translate="label,comment">
+							<label>Round price and special price excess fifty cent</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</round_price_excess_fifty_cent>
+						<allow_products_without_image translate="label,comment">
+							<label>Allow product without image</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</allow_products_without_image>
+						<allow_price_zero translate="label,comment">
+							<label>Allow price zero</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</allow_price_zero>
+					</fields>
+				</lioce_catalogsync>
+			</groups>
+		</catalog>
+	</sections>
+</config>

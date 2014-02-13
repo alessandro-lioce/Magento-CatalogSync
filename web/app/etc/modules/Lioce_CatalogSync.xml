@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Lioce_CatalogSync>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Lioce_CatalogSync>
+    </modules>
+</config>
