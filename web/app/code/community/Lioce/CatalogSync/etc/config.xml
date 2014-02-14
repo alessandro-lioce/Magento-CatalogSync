@@ -49,6 +49,17 @@
 			</lioce_catalogsync>
 		</routers>
 	</frontend>
+	<adminhtml>
+		<translate>
+			<modules>
+				<Lioce_CatalogSync>
+					<files>
+						<default>Lioce_CatalogSync.csv</default>
+					</files>
+				</Lioce_CatalogSync>
+			</modules>
+		</translate>
+	</adminhtml>
 	<default>
 		<catalog>
 			<lioce_catalogsync>

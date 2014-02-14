@@ -9,6 +9,7 @@
 			if (Mage::getStoreConfig('catalog/lioce_catalogsync/lock_cron'))
 			{
 				//bloccato da amministrazione
+				echo 'cron is locked by administration panel';
 			}
 			else 
 			{
@@ -18,12 +19,28 @@
 		
 		public function manualAction()
 		{
+			/*
+			$data = array(
+				array(
+					'attribute_code'=>'text',
+					'input'=>'text',
+					'value'=>'Hello'
+				),
+				array(
+					'attribute_code'=>'size',
+					'input'=>'select',
+					'type'=>'admin_store_label',
+					'value'=>4
+				)
+			);					
+					
+			echo Zend_Json::encode($data);
+			*/
 			$this->check();
 		}
 		
 		public function check()
 		{
-			$start = time();
 			$resource = Mage::getSingleton('core/resource');
 			$connection = $resource->getConnection('core_write');
 			$table_data = new Zend_Db_Table(array('name' => $resource->getTableName('lioce_catalogsync_data'), 'db' => $connection));
@@ -60,6 +77,7 @@
 				else
 				{
 					//il cron precedente potrebbe essere ancora in esecuzione, non abbiamo superato il tempo di attesa, non deve ripartire
+					echo 'there is already an active cron';
 				}
 			}
 			$connection->closeConnection();
@@ -78,6 +96,7 @@
 	
 		public function start()
 		{
+			$start = time();
 			Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 			$limit = 1000;
 			
@@ -139,11 +158,11 @@
 				$i++;
 				try
 				{
-					if ($row['magento_product_id'] > 0)
+					if ($row->magento_product_id > 0)
 					{
-						echo '1'; return;
-						Mage::helper('catalogsync')->update($row);
-						echo 'update magento_product_id: '.$row['magento_product_id'].'<br>';
+						$product = Mage::getModel('catalog/product')->load($row->magento_product_id);
+						Mage::helper('catalogsync')->update($row, $product);
+						echo 'update magento_product_id: '.$row->magento_product_id.'<br>';
 						
 						$row->imported_at = new Zend_Db_Expr('NOW()');
 						$row->save();
